@@ -9,7 +9,7 @@ class User(models.Model):
 class PizzaInfo(models.Model):
     name=models.CharField(max_length=200)
 
-class Ingredients(models.Model):
+class Ingredient(models.Model):
     name=models.CharField(max_length=200)
     description=models.CharField(max_length=200)
 
@@ -24,5 +24,5 @@ class Order(models.Model):
 
 class Pizza(models.Model):
     pizza=models.ForeignKey(to=PizzaInfo, on_delete=models.CASCADE)
-    ingredient=models.ForeignKey(to=Ingredients, on_delete=models.CASCADE)
+    ingredient=models.ForeignKey(to=Ingredient, on_delete=models.CASCADE)
     
