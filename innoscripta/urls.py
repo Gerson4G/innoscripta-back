@@ -18,16 +18,18 @@ from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers
 from pizza.views_generic import *
-from pizza.views.user import UserView
+from pizza.views.user import UserView, LoginView
 from django.views.decorators.csrf import csrf_exempt
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'orders', OrderView)
 router.register(r'users', UserView, basename='Users')
+#router.register(r'users/login/', LoginView, basename='UsersLogin')
 router.register(r'pizza-info', PizzaInfoList)
 router.register(r'ingredients', IngerdientsList)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/users/login/', LoginView.as_view()),
 ]
