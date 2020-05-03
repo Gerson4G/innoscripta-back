@@ -3,10 +3,12 @@ from pizza.models import *
 from rest_framework import serializers, viewsets
 from rest_framework import status
 from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
+        fields='__all__'
 
 # ViewSets define the view behavior.
 class OrderView(viewsets.ModelViewSet):
@@ -16,15 +18,18 @@ class OrderView(viewsets.ModelViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
+        fields='__all__'
 
 class PizzaInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PizzaInfo
+        fields='__all__'
 
 class UserView(viewsets.ModelViewSet):
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    authentication_classes = ()
 
     @classmethod
     def get_extra_actions(cls):
@@ -35,6 +40,7 @@ class UserView(viewsets.ModelViewSet):
         serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)
 
+    @csrf_exempt
     def post(self, request, format=None):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
@@ -49,6 +55,7 @@ class PizzaInfoList(viewsets.ModelViewSet):
 class IngerdientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
+        fields='__all__'
 
 class IngerdientsList(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
