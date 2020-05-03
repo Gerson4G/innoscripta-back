@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers
-from pizza.views_generic import *
+from pizza.views.ingredients import *
 from pizza.views.user import UserView, LoginView
 from pizza.views.order import OrderView
 from django.views.decorators.csrf import csrf_exempt

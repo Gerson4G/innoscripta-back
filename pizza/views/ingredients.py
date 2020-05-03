@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from pizza.models import *
+from pizza.models import PizzaInfo, Pizza, Ingredient
 from rest_framework import serializers, viewsets
 from rest_framework import status
 from rest_framework.response import Response
