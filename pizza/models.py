@@ -13,6 +13,7 @@ class User(models.Model):
 class PizzaInfo(models.Model):
     name=models.CharField(max_length=200)
     image_url=models.CharField(max_length=800, blank=True, null=True)
+    cost=models.FloatField(default=0)
 
     def __str__(self):
         return '{}'.format(self.name)
