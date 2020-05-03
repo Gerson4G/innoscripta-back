@@ -35,6 +35,7 @@ class Order(models.Model):
         return 'Order #: {} - A {} pizza - By {}'.format(self.order_number, self.pizza.name, self.user.name)
 
 class Pizza(models.Model):
-    pizza=models.ForeignKey(to=PizzaInfo, on_delete=models.CASCADE)
-    ingredient=models.ForeignKey(to=Ingredient, on_delete=models.CASCADE)
+    pizza=models.ForeignKey(to=PizzaInfo, on_delete=models.CASCADE, related_name='pizza_ingredients')
+    ingredient=models.ForeignKey(to=Ingredient, on_delete=models.CASCADE, related_name='ingredients')
+    
     

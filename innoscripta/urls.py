@@ -26,6 +26,7 @@ router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'orders', OrderView)
 router.register(r'users', UserView, basename='Users')
 router.register(r'pizza-info', PizzaInfoList)
+router.register(r'pizza', PizzaList, basename="Pizza")
 router.register(r'ingredients', IngerdientsList)
 
 urlpatterns = [

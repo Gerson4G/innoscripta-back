@@ -5,16 +5,20 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 
+class RelatedIngredient(serializers.RelatedField):
+    def to_representation(self, value):
+        return '%s' % (value.name)
 
-
-class PizzaInfoSerializer(serializers.ModelSerializer):
+class PizzaSerializer(serializers.ModelSerializer):
+    pizza = RelatedIngredient(read_only=True)
     class Meta:
-        model = PizzaInfo
+        model = Pizza
         fields='__all__'
 
-class PizzaInfoList(viewsets.ModelViewSet):
-    queryset = PizzaInfo.objects.all()
-    serializer_class = PizzaInfoSerializer
+class PizzaList(viewsets.ModelViewSet):
+    queryset = Pizza.objects.all()
+    serializer_class = PizzaSerializer
+
 
 class IngerdientSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,3 +28,19 @@ class IngerdientSerializer(serializers.ModelSerializer):
 class IngerdientsList(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngerdientSerializer
+
+class PizzaIngredientsSerializer(serializers.ModelSerializer):
+    ingredient = RelatedIngredient(read_only=True)
+    class Meta:
+        model = Pizza
+        fields=['ingredient']
+
+class PizzaInfoSerializer(serializers.ModelSerializer):
+    pizza_ingredients = PizzaIngredientsSerializer(many=True)
+    class Meta:
+        model = PizzaInfo
+        fields=['name', 'pizza_ingredients']
+
+class PizzaInfoList(viewsets.ModelViewSet):
+    queryset = PizzaInfo.objects.all()
+    serializer_class = PizzaInfoSerializer
