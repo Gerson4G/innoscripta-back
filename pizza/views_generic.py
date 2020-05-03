@@ -5,15 +5,6 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 
-class OrderSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Order
-        fields='__all__'
-
-# ViewSets define the view behavior.
-class OrderView(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
 
 
 class PizzaInfoSerializer(serializers.ModelSerializer):

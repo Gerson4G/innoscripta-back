@@ -19,12 +19,12 @@ from django.conf.urls import url, include
 from rest_framework import routers
 from pizza.views_generic import *
 from pizza.views.user import UserView, LoginView
+from pizza.views.order import OrderView
 from django.views.decorators.csrf import csrf_exempt
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'orders', OrderView)
 router.register(r'users', UserView, basename='Users')
-#router.register(r'users/login/', LoginView, basename='UsersLogin')
 router.register(r'pizza-info', PizzaInfoList)
 router.register(r'ingredients', IngerdientsList)
 
