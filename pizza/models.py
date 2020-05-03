@@ -12,7 +12,7 @@ class PizzaInfo(models.Model):
 
 class Ingredient(models.Model):
     name=models.CharField(max_length=200)
-    description=models.CharField(max_length=200)
+    description=models.CharField(max_length=200, blank=True, null=True)
 
 class Order(models.Model):
     order_number=models.IntegerField()
