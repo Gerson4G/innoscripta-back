@@ -6,7 +6,11 @@ Django backend applied along with Django Rest Framework package to be able to se
 No tests available.
 Tree folder is not fully organized, only heavy views files.
 No Git Flow workflow was used.
+DEBUG moe is ON.
 
 Django admin user creentials:
 username: admin-django
 password: admin
+
+Heroku URL: https://innoscripta-back.herokuapp.com/
+
