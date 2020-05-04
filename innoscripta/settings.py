@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'innoscripta.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'innoscripta',
+        'NAME': os.environ.get('DATABASE_HOST', 'innoscripta'),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
         'PORT': '3306',
         'USER': os.environ.get('USER_HOST', 'admin'),
