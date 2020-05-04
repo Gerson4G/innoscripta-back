@@ -82,7 +82,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'innoscripta',
         'USER': 'admin',
-        'PASSWORD': 'admin'
+        'PASSWORD': 'admin',
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
     }
 }
 

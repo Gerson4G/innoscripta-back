@@ -1,1 +1,1 @@
-web: make runserver
+web: python manage.py runserver
