@@ -2,8 +2,8 @@ from django.db import models
 
 class User(models.Model):
     email=models.EmailField(max_length=200, unique=True)
-    phone=models.CharField(max_length=200)
-    address=models.CharField(max_length=512)
+    phone=models.CharField(max_length=200, blank=True, null=True)
+    address=models.CharField(max_length=512, blank=True, null=True)
     password=models.CharField(max_length=512)
     name=models.CharField(max_length=512, default="")
 
