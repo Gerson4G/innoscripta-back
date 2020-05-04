@@ -39,7 +39,7 @@ class PizzaInfoSerializer(serializers.ModelSerializer):
     pizza_ingredients = PizzaIngredientsSerializer(many=True)
     class Meta:
         model = PizzaInfo
-        fields=['name', 'cost', 'pizza_ingredients']
+        fields=['id', 'name', 'cost', 'pizza_ingredients', 'image_url']
 
 class PizzaInfoList(viewsets.ModelViewSet):
     queryset = PizzaInfo.objects.all()
